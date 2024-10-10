@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrabalhoPassaro.MainPage"
+             Shell.NavBarIsVisible="False">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image
+            Source="telainicio.png"
+            Grid.Row="0"
+            Grid.RowSpan="2"/>
+        <Label Text="Flying Bird"
+               LineHeight="1.5"
+               TextColor="Black"
+               Grid.Row="1"
+               FontSize="21"
+               FontFamily="Aqua Wow.ttf"
+               />
+    </Grid>
+</ContentPage>
