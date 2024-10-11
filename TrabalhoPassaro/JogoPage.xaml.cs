@@ -1,6 +1,6 @@
 namespace TrabalhoPassaro;
 
-public partial class MainPage : ContentPage
+public partial class JogoPage : ContentPage
 {
 	
 
@@ -9,5 +9,4 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
-	
 }

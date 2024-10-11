@@ -20,5 +20,13 @@
                FontSize="21"
                FontFamily="Aqua Wow.ttf"
                />
+               <Button Text="Iniciar" 
+                    BackgroundColor="#b167c2"
+                    TextColor="Black"
+                    CornerRadius="5"
+                    HeightRequest="50"
+                    Clicked="iniciarclicado"/>
+
+                    
     </Grid>
 </ContentPage>

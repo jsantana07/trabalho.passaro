@@ -9,6 +9,9 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
-	
+	private async void iniciarclicado(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new JogoPage());
+        }
 }
 
