@@ -5,7 +5,10 @@
 
       
             <Grid>
-
+              <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnGridClicked"/>
+            </Grid.GestureRecognizers>
+            
                <Image
                      x:Name="FundoImg"
                      Source="imagemfundo.jpg"

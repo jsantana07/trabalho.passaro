@@ -8,11 +8,27 @@ public partial class JogoPage : ContentPage
    double larguraJanela=0;
    double alturaJanela=0;
    int velocidade=20;
+    const int maxTempoPulando=3;
+   int tempoPulando=0;
+   bool estaPulando=false;
+   const int forcaPulo=60;
+
 
 
 		public JogoPage()
 	{
 		InitializeComponent();
+	}
+	void AplicaPulo()
+	{
+      imgpassaro.TranslationY-=forcaPulo;
+	  tempoPulando++;
+	  if(tempoPulando>=maxTempoPulando)
+	  {
+		estaPulando=false;
+		tempoPulando=0;
+	  }
+
 	}
 	void AplicaGravidade()
 	{
@@ -20,9 +36,11 @@ public partial class JogoPage : ContentPage
 	}
 
      async Task Desenhar()
-	 {
+	  {
 		while (!estaMorto)
-		{
+       {   if (estaPulando)
+		        AplicaPulo();
+		else
 			AplicaGravidade();
 			await Task.Delay(tempoEntreFrames);
 			GerenciaCanos();
@@ -32,9 +50,10 @@ public partial class JogoPage : ContentPage
 				frameGameOver.IsVisible = true;
 				break;
 			}
-			await Task.Delay(tempoEntreFrames);
-		}
-		}
+	 		await Task.Delay(tempoEntreFrames);
+	    }
+	 }
+	 
    
 
 	protected override void OnSizeAllocated(double w, double h)
@@ -97,5 +116,9 @@ public partial class JogoPage : ContentPage
 			return false;
 
 	}
+	void OnGridClicked(object s, TappedEventArgs a)
+		{ 
+			estaPulando=true;
+		}
 
 }
