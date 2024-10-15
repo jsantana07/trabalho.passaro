@@ -26,8 +26,15 @@ public partial class JogoPage : ContentPage
 			AplicaGravidade();
 			await Task.Delay(tempoEntreFrames);
 			GerenciaCanos();
+		if (VerificaColisao())
+			{
+				estaMorto = true;
+				frameGameOver.IsVisible = true;
+				break;
+			}
+			await Task.Delay(tempoEntreFrames);
 		}
-	 }
+		}
    
 
 	protected override void OnSizeAllocated(double w, double h)
@@ -59,6 +66,36 @@ public partial class JogoPage : ContentPage
 	{
 		estaMorto=false;
 	    imgpassaro.TranslationY=0;
+	}
+	bool VerificaColisao()
+	{
+		if (!estaMorto)
+		{
+			if (VerificaColisaoTeto() ||
+			VerificaColisaoChao())
+			{
+				return true;
+			}
+
+		}
+		return false;
+	}
+	bool VerificaColisaoTeto()
+	{
+		var minY = -alturaJanela / 2;
+		if (imgpassaro.TranslationY <= minY)
+			return true;
+		else
+			return false;
+	}
+	bool VerificaColisaoChao()
+	{
+		var maxY = alturaJanela / 2 - FundoImg.HeightRequest;
+		if (imgpassaro.TranslationY >= maxY)
+			return true;
+		else
+			return false;
+
 	}
 
 }

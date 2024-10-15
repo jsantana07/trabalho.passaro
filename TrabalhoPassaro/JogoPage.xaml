@@ -25,7 +25,7 @@
                <Image
                      x:Name="CanoDeBaixo"
                      Source="canochao.png"
-                     WidthRequest="80"
+                     WidthRequest="230"
                      VerticalOptions="End"
                      HorizontalOptions="End"
                      />
@@ -33,7 +33,7 @@
                <Image
                      x:Name="CanoDeCima"
                      Source="canoceu.png"
-                     WidthRequest="80"
+                     WidthRequest="230"
                      VerticalOptions="Start"
                      HorizontalOptions="End"
                      />
@@ -45,6 +45,10 @@
                <Frame.GestureRecognizers>
                <TapGestureRecognizer Tapped="OnGameOverClicked"/>
                </Frame.GestureRecognizers>
+               <Image Source="gameover.png"
+                HeightRequest="195"
+                WidthRequest="160"
+                />
 
             </Frame>       
                
