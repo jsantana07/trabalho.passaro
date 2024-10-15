@@ -1,41 +1,57 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TrabalhoPassaro.JogoPage"
-             Shell.NavBarIsVisible="False"/>
-<Grid>
+             x:Class="TrabalhoPassaro.JogoPage">
 
-    <Image
-        x:Name="fotoFundo"
-        Source="imagemfundo.jpg"
-        Opacity=".8"
-        Aspect="Fill"
-        VerticalOptions="FillAndExpand"
-        HorizontalOptions="FillAndExpand"/>
+      
+            <Grid>
 
-    <Image
-        x:Name="fotopassaro"
-        Source="fotopassaro.png"
-        WidthRequest="60"
-        HeightRequest="90"
-        VerticalOptions="Center"
-        HorizontalOptions="Start"/>
+               <Image
+                     x:Name="FundoImg"
+                     Source="imagemfundo.jpg"
+                     Opacity=".8"
+                     Aspect="Fill"
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"/>
 
-    <Image
-        x:Name="canochao"
-        Source="canochao.png"
-        WidthRequest="300"
-        VerticalOptions="End"
-        HorizontalOptions="End"/>
+               <Image
+                    x:Name="imgpassaro"
+                    Source="fotopassaro.png"
+                    WidthRequest="60"
+                    HeightRequest="90"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"/>
 
-    <Image
-        x:Name="canoceu"
-        Source="canoceu.png"
-        WidthRequest="80"
-        VerticalOptions="Start"
-        HorizontalOptions="End"/>
+               <Image
+                     x:Name="CanoDeBaixo"
+                     Source="canochao.png"
+                     WidthRequest="80"
+                     VerticalOptions="End"
+                     HorizontalOptions="End"
+                     />
 
+               <Image
+                     x:Name="CanoDeCima"
+                     Source="canoceu.png"
+                     WidthRequest="80"
+                     VerticalOptions="Start"
+                     HorizontalOptions="End"
+                     />
+               
+                <Frame x:Name="frameGameOver"
+               BackgroundColor="#99000000"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill">
+               <Frame.GestureRecognizers>
+               <TapGestureRecognizer Tapped="OnGameOverClicked"/>
+               </Frame.GestureRecognizers>
 
-</Grid>
+            </Frame>       
+               
+               
+               
+
+    
+            </Grid>
 
 </ContentPage>
