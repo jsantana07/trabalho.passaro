@@ -3,62 +3,72 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrabalhoPassaro.JogoPage">
 
-      
-            <Grid>
-              <Grid.GestureRecognizers>
-            <TapGestureRecognizer Tapped="OnGridClicked"/>
+
+      <Grid>
+            <Grid.GestureRecognizers>
+                  <TapGestureRecognizer Tapped="OnGridClicked"/>
             </Grid.GestureRecognizers>
-            
-               <Image
-                     x:Name="FundoImg"
-                     Source="imagemfundo.jpg"
-                     Opacity=".8"
-                     Aspect="Fill"
-                     VerticalOptions="FillAndExpand"
-                     HorizontalOptions="FillAndExpand"/>
 
-               <Image
-                    x:Name="imgpassaro"
-                    Source="fotopassaro.png"
-                    WidthRequest="60"
-                    HeightRequest="90"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Start"/>
 
-               <Image
-                     x:Name="CanoDeBaixo"
-                     Source="canochao.png"
-                     WidthRequest="230"
-                     VerticalOptions="End"
-                     HorizontalOptions="End"
-                     />
+            <Image
+                  x:Name="FundoImg"
+                  Source="imagemfundo.jpg"
+                  Opacity=".8"
+                  Aspect="Fill"
+                  VerticalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand"/>
 
-               <Image
-                     x:Name="CanoDeCima"
-                     Source="canoceu.png"
-                     WidthRequest="230"
-                     VerticalOptions="Start"
-                     HorizontalOptions="End"
-                     />
-               
-                <Frame x:Name="frameGameOver"
-               BackgroundColor="#99000000"
-               HorizontalOptions="Fill"
-               VerticalOptions="Fill">
-               <Frame.GestureRecognizers>
-               <TapGestureRecognizer Tapped="OnGameOverClicked"/>
-               </Frame.GestureRecognizers>
-               <Image Source="gameover.png"
-                HeightRequest="195"
-                WidthRequest="160"
+            <Image
+                  x:Name="imgpassaro"
+                  Source="fotopassaro.png"
+                  WidthRequest="60"
+                  HeightRequest="90"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Start"/>
+
+            <Image
+                  x:Name="CanoDeBaixo"
+                  Source="canochao.png"
+                  WidthRequest="400"
+                  VerticalOptions="End"
+                  HorizontalOptions="End"
+                  HeightRequest="450"
                 />
 
-            </Frame>       
-               
-               
-               
+            <Image
+                  x:Name="CanoDeCima"
+                  Source="canoceu.png"
+                  WidthRequest="400"
+                   HeightRequest="450"
+                  VerticalOptions="Start"
+                  HorizontalOptions="End"/>
 
-    
-            </Grid>
+            <Label x:Name="LabelScore"
+                   VerticalOptions="Start"
+                   HorizontalOptions="End"/>
+
+            <Frame x:Name="frameGameOver"
+                   BackgroundColor="#99000000"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Fill">
+                  <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnGameOverClicked"/>
+                  </Frame.GestureRecognizers>
+                  <VerticalStackLayout>
+                        <Image Source="gameover.png"
+                               HeightRequest="195"
+                               WidthRequest="160"
+                               />
+                        <Label x:Name="LabelGameOver"
+                               VerticalOptions="Start"
+                               HorizontalOptions="Center"/>
+                  </VerticalStackLayout>
+            </Frame>
+
+
+
+
+
+      </Grid>
 
 </ContentPage>

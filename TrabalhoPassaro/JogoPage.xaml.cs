@@ -12,6 +12,9 @@ public partial class JogoPage : ContentPage
    int tempoPulando=0;
    bool estaPulando=false;
    const int forcaPulo=60;
+   	const int aberturaMinima = 200;
+	int score=0;
+	
 
 
 
@@ -49,6 +52,7 @@ public partial class JogoPage : ContentPage
 				estaMorto = true;
 				frameGameOver.IsVisible = true;
 				break;
+				LabelGameOver.Text="Você pulou:" + score.ToString("D3");
 			}
 	 		await Task.Delay(tempoEntreFrames);
 	    }
@@ -69,8 +73,14 @@ public partial class JogoPage : ContentPage
 		CanoDeBaixo.TranslationX-=velocidade;
 		if(CanoDeBaixo.TranslationX<=-larguraJanela)
 	 {
-		CanoDeBaixo.TranslationX=0;
-		CanoDeCima.TranslationX=0;
+		CanoDeBaixo.TranslationX=4;
+		CanoDeCima.TranslationX=4;
+		var alturaMax = -100;
+			var alturaMin = -CanoDeBaixo.HeightRequest;
+			CanoDeCima.TranslationY = Random.Shared.Next((int)alturaMin, (int)alturaMax);
+			CanoDeBaixo.TranslationY = CanoDeCima.TranslationY + aberturaMinima + CanoDeBaixo.HeightRequest;
+			score ++;
+			LabelScore.Text="Canos:" + score.ToString("D3");
 
      }
   
