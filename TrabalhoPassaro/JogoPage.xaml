@@ -47,12 +47,14 @@
                    HorizontalOptions="End"/>
 
             <Frame x:Name="frameGameOver"
+                        
                    BackgroundColor="#99000000"
                    HorizontalOptions="Fill"
                    VerticalOptions="Fill">
-                  <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnGameOverClicked"/>
-                  </Frame.GestureRecognizers>
+              
+                     <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="gameover"/>
+                     </Frame.GestureRecognizers>
                   <Grid>
                         <Grid.RowDefinitions>
                               <RowDefinition Height="*"/>
@@ -73,7 +75,7 @@
                                           <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                               </Grid>
-                              <Label Text="Você passou por 001 Canos!!"
+                              <Label Text="Você passou por 0 canos"
                                      x:Name="LabelCanos"
                                     
                                      Grid.Column="1"
