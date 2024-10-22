@@ -52,7 +52,6 @@ public partial class JogoPage : ContentPage
 				estaMorto = true;
 				frameGameOver.IsVisible = true;
 				break;
-				LabelGameOver.Text="Você pulou:" + score.ToString("D3");
 			}
 	 		await Task.Delay(tempoEntreFrames);
 	    }
@@ -98,10 +97,12 @@ public partial class JogoPage : ContentPage
 	}
 	bool VerificaColisao()
 	{
-		if (!estaMorto)
+			if (!estaMorto)
 		{
 			if (VerificaColisaoTeto() ||
-			VerificaColisaoChao())
+			VerificaColisaoChao() || 
+			VerificaColisaoCanoCima() ||
+			VerificaColisaoCanoBaixo())
 			{
 				return true;
 			}
@@ -130,5 +131,36 @@ public partial class JogoPage : ContentPage
 		{ 
 			estaPulando=true;
 		}
+
+		bool VerificaColisaoCanoCima()
+	{
+		var posHPassaro = (larguraJanela / 2) - (imgpassaro.WidthRequest / 2);
+		var posVPassaro = (alturaJanela / 2) - (imgpassaro.HeightRequest / 2) + imgpassaro.TranslationY;
+		if (posHPassaro >= Math.Abs(CanoDeCima.TranslationX) - CanoDeCima.WidthRequest &&
+		 posHPassaro <= Math.Abs(CanoDeCima.TranslationX) + CanoDeCima.WidthRequest &&
+		 posVPassaro <= CanoDeCima.HeightRequest + CanoDeCima.TranslationY)
+		 {
+			return true;
+		 }
+		 else 
+		 {
+			return false;
+		 }
+	}
+	bool VerificaColisaoCanoBaixo()
+	{
+		var posHPassaro = (larguraJanela / 2) - (imgpassaro.WidthRequest / 2);
+		var posVPassaro = (alturaJanela / 2) - (imgpassaro.HeightRequest / 2) + imgpassaro.TranslationY;
+		if (posHPassaro >= Math.Abs(CanoDeBaixo.TranslationX) - CanoDeBaixo.WidthRequest &&
+		 posHPassaro <= Math.Abs(CanoDeBaixo.TranslationX) + CanoDeBaixo.WidthRequest &&
+		 posVPassaro <= CanoDeBaixo.HeightRequest + CanoDeBaixo.TranslationY)
+		 {
+			return true;
+		 }
+		 else 
+		 {
+			return false;
+		 }
+	}
 
 }

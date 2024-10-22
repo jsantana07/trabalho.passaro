@@ -21,25 +21,24 @@
             <Image
                   x:Name="imgpassaro"
                   Source="fotopassaro.png"
-                  WidthRequest="60"
-                  HeightRequest="90"
+                  WidthRequest="50"
+                  HeightRequest="80"
                   VerticalOptions="Center"
-                  HorizontalOptions="Start"/>
+                  HorizontalOptions="Center"/>
 
             <Image
                   x:Name="CanoDeBaixo"
                   Source="canochao.png"
-                  WidthRequest="400"
+                  WidthRequest="50"
                   VerticalOptions="End"
                   HorizontalOptions="End"
-                  HeightRequest="450"
-                />
+                  HeightRequest="650"/>
 
             <Image
                   x:Name="CanoDeCima"
                   Source="canoceu.png"
-                  WidthRequest="400"
-                   HeightRequest="450"
+                  WidthRequest="50"
+                  HeightRequest="650"
                   VerticalOptions="Start"
                   HorizontalOptions="End"/>
 
@@ -54,21 +53,39 @@
                   <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnGameOverClicked"/>
                   </Frame.GestureRecognizers>
-                  <VerticalStackLayout>
+                  <Grid>
+                        <Grid.RowDefinitions>
+                              <RowDefinition Height="*"/>
+                              <RowDefinition Height="*"/>
+                              <RowDefinition Height="*"/>
+                              <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
                         <Image Source="gameover.png"
-                               HeightRequest="195"
-                               WidthRequest="160"
-                               />
-                        <Label x:Name="LabelGameOver"
-                               VerticalOptions="Start"
-                               HorizontalOptions="Center"/>
-                  </VerticalStackLayout>
+                               HeightRequest="500"
+                               WidthRequest="250"
+                               Grid.Row="2"/>
+                        <Frame Grid.Row="1"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                              <Grid>
+                                    <Grid.ColumnDefinitions>
+                                          <ColumnDefinition Width="*"/>
+                                          <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                              </Grid>
+                              <Label Text="Você passou por 001 Canos!!"
+                                     x:Name="LabelCanos"
+                                    
+                                     Grid.Column="1"
+                                     Grid.Row="4"/>
+                        </Frame>
+                  </Grid>
             </Frame>
 
-
-
-
-
       </Grid>
+
+
+
+
 
 </ContentPage>
