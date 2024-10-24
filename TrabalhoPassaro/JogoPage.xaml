@@ -21,40 +21,51 @@
             <Image
                   x:Name="imgpassaro"
                   Source="fotopassaro.png"
+                   BackgroundColor="Red"
                   WidthRequest="50"
                   HeightRequest="80"
+                  Margin="20,20,20,20"
+                  Aspect="AspectFit"
                   VerticalOptions="Center"
-                  HorizontalOptions="Center"/>
+                  HorizontalOptions="Start"/>
 
             <Image
                   x:Name="CanoDeBaixo"
                   Source="canochao.png"
+                  BackgroundColor="Red"
                   WidthRequest="50"
-                  VerticalOptions="End"
+                  Margin="0,0,0,20"
+                  Aspect="Fill"
+                  VerticalOptions="Start"
                   HorizontalOptions="End"
-                  HeightRequest="650"/>
+                  HeightRequest="620"/>
 
             <Image
                   x:Name="CanoDeCima"
+                  BackgroundColor="Red"
                   Source="canoceu.png"
+                  Margin="0, 0, 0, 0"
+                  Aspect="Fill"
                   WidthRequest="50"
-                  HeightRequest="650"
+                  HeightRequest="620"
                   VerticalOptions="Start"
                   HorizontalOptions="End"/>
 
             <Label x:Name="LabelScore"
+                   Text="Score: 00000"
+                   FontSize="30"
+                   Margin="0,20,20,0"
                    VerticalOptions="Start"
                    HorizontalOptions="End"/>
 
             <Frame x:Name="frameGameOver"
-                        
                    BackgroundColor="#99000000"
                    HorizontalOptions="Fill"
                    VerticalOptions="Fill">
-              
-                     <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="gameover"/>
-                     </Frame.GestureRecognizers>
+
+                  <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="gameover"/>
+                  </Frame.GestureRecognizers>
                   <Grid>
                         <Grid.RowDefinitions>
                               <RowDefinition Height="*"/>
@@ -77,7 +88,6 @@
                               </Grid>
                               <Label Text="Você passou por 0 canos"
                                      x:Name="LabelCanos"
-                                    
                                      Grid.Column="1"
                                      Grid.Row="4"/>
                         </Frame>

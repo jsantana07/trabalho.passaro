@@ -23,6 +23,11 @@ public partial class JogoPage : ContentPage
 		InitializeComponent();
 	}
 
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+	}
+
 
 	void AplicaPulo()
 	{
@@ -48,14 +53,17 @@ public partial class JogoPage : ContentPage
 				AplicaPulo();
 			else
 				AplicaGravidade();
-			await Task.Delay(tempoEntreFrames);
+
 			GerenciaCanos();
+
 			if (VerificaColisao())
 			{
 				estaMorto = true;
+				LabelCanos.Text = "Você passou por\n" + score + " canos";
 				frameGameOver.IsVisible = true;
 				break;
 			}
+
 			await Task.Delay(tempoEntreFrames);
 		}
 	}
@@ -67,6 +75,11 @@ public partial class JogoPage : ContentPage
 		base.OnSizeAllocated(w, h);
 		larguraJanela = w;
 		alturaJanela = h;
+		if (h > 0)
+		{
+			CanoDeCima.HeightRequest = h;
+			CanoDeBaixo.HeightRequest = h ;
+		}
 	}
 
 	void GerenciaCanos()
@@ -75,14 +88,19 @@ public partial class JogoPage : ContentPage
 		CanoDeBaixo.TranslationX -= velocidade;
 		if (CanoDeBaixo.TranslationX <= -larguraJanela)
 		{
-			CanoDeBaixo.TranslationX = 4;
-			CanoDeCima.TranslationX = 4;
-			var alturaMax = -100;
-			var alturaMin = -CanoDeBaixo.HeightRequest;
-			CanoDeCima.TranslationY = Random.Shared.Next((int)alturaMin, (int)alturaMax);
-			CanoDeBaixo.TranslationY = CanoDeCima.TranslationY + aberturaMinima + CanoDeBaixo.HeightRequest;
+			CanoDeBaixo.TranslationX = 0;
+			CanoDeCima.TranslationX = 0;
+
+			var alturaMaxima = -(CanoDeBaixo.HeightRequest * 0.1);
+			var alturaMinima = -(CanoDeBaixo.HeightRequest * 0.8);
+
+			CanoDeCima.TranslationY = Random.Shared.Next((int)alturaMinima, (int)alturaMaxima);
+			CanoDeBaixo.TranslationY = CanoDeCima.HeightRequest + CanoDeCima.TranslationY + aberturaMinima;
+
 			score++;
-			LabelScore.Text = "Canos:" + score.ToString("D3");
+			LabelScore.Text = "Score: " + score.ToString("D5");
+			if (score % 4 == 0)
+				velocidade++;
 
 		}
 
@@ -97,8 +115,13 @@ public partial class JogoPage : ContentPage
 	}
 	void Inicializar()
 	{
-		estaMorto = false;
+		CanoDeBaixo.TranslationX = -larguraJanela;
+		CanoDeCima.TranslationX = -larguraJanela;
+		imgpassaro.TranslationX = 0;
 		imgpassaro.TranslationY = 0;
+		score = 0;
+
+		GerenciaCanos();
 	}
 	bool VerificaColisao()
 	{
@@ -152,6 +175,22 @@ public partial class JogoPage : ContentPage
 			return false;
 		}
 	}
+	 bool VerificaColisaoCanoBaixo()
+  {
+    var posicaoHorizontalPardal = larguraJanela - 50 - imgpassaro.WidthRequest / 2;
+    var posicaoVerticalPardal   = (alturaJanela / 2) + (imgpassaro.HeightRequest / 2) + imgpassaro.TranslationY;
+
+    var yMaxCano = CanoDeCima.HeightRequest + CanoDeCima.TranslationY + aberturaMinima;
+
+    if (
+         posicaoHorizontalPardal >= Math.Abs(CanoDeCima.TranslationX) - CanoDeCima.WidthRequest &&
+         posicaoHorizontalPardal <= Math.Abs(CanoDeCima.TranslationX) + CanoDeCima.WidthRequest &&
+         posicaoVerticalPardal   >= yMaxCano
+       )
+      return true;
+    else
+      return false;
+  }
 
 
 }
